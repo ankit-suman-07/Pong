@@ -17,7 +17,7 @@
 git clone https://github.com/ankit-suman-07/Pong.git
 ```
 
-**Step 2:**Open Godot
+**Step 2:** Open Godot
 ```
 In godot editor, click open a new project and browse to the cloned repository folder and select.
 ```
