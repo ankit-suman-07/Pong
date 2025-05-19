@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4lqjhyk4hxql"]
+[gd_scene load_steps=8 format=3 uid="uid://b4lqjhyk4hxql"]
 
+[ext_resource type="Script" uid="uid://6tiayopp44jf" path="res://scripts/world.gd" id="1_k0juu"]
 [ext_resource type="PackedScene" uid="uid://b4nhas6vu8fiy" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="PackedScene" uid="uid://cf6iyov4tqgrt" path="res://scenes/paddle_ai.tscn" id="2_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://du552l5g3lmog" path="res://scenes/ball.tscn" id="2_rwgxs"]
+[ext_resource type="FontFile" uid="uid://d0gb1phgr8gkj" path="res://04b_30/04B_30__.TTF" id="5_71j4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwgxs"]
 size = Vector2(35.1226, 1231.96)
 
+[sub_resource type="Theme" id="Theme_qfnet"]
+
 [node name="world" type="Node2D"]
+script = ExtResource("1_k0juu")
 
 [node name="player" parent="." instance=ExtResource("1_nnsk1")]
 position = Vector2(64, 320)
@@ -27,13 +32,11 @@ shape = SubResource("RectangleShape2D_rwgxs")
 [node name="top" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(576, 1.90735e-06)
 rotation = 1.57438
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_rwgxs")
 
 [node name="bottom" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(576, 648)
 rotation = 1.57438
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_rwgxs")
 
 [node name="right" type="CollisionShape2D" parent="StaticBody2D"]
@@ -65,3 +68,33 @@ offset_top = 673.0
 offset_right = 1832.0
 offset_bottom = 713.0
 rotation = -1.57169
+
+[node name="PauseBtn" type="Button" parent="."]
+offset_left = 1016.0
+offset_top = 32.0
+offset_right = 1126.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("5_71j4m")
+theme_override_font_sizes/font_size = 24
+text = "Pause"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+self_modulate = Color(0.716296, 0.716296, 0.716296, 1)
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 704.0
+offset_bottom = 384.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_qfnet")
+alignment = 1
+
+[node name="PlayBtn" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_71j4m")
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+
+[connection signal="pressed" from="PauseBtn" to="." method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayBtn" to="." method="_on_play_btn_pressed"]
