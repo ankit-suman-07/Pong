@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4lqjhyk4hxql"]
+
+[ext_resource type="PackedScene" uid="uid://b4nhas6vu8fiy" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://cf6iyov4tqgrt" path="res://scenes/paddle_ai.tscn" id="2_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://du552l5g3lmog" path="res://scenes/ball.tscn" id="2_rwgxs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwgxs"]
+size = Vector2(35.1226, 1231.96)
+
+[node name="world" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_nnsk1")]
+position = Vector2(64, 320)
+
+[node name="paddle_ai" parent="." instance=ExtResource("2_4wyf3")]
+position = Vector2(1088, 320)
+
+[node name="ball" parent="." instance=ExtResource("2_rwgxs")]
+position = Vector2(576, 320)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="left" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_rwgxs")
+
+[node name="top" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 1.90735e-06)
+rotation = 1.57438
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_rwgxs")
+
+[node name="bottom" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 648)
+rotation = 1.57438
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_rwgxs")
+
+[node name="right" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1152, 324)
+shape = SubResource("RectangleShape2D_rwgxs")
+
+[node name="top2" type="ColorRect" parent="StaticBody2D"]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 1176.0
+offset_bottom = 16.0
+
+[node name="bottom2" type="ColorRect" parent="StaticBody2D"]
+offset_left = -24.0
+offset_top = 632.0
+offset_right = 1176.0
+offset_bottom = 672.0
+
+[node name="left2" type="ColorRect" parent="StaticBody2D"]
+offset_left = -24.0
+offset_top = 671.0
+offset_right = 670.0
+offset_bottom = 711.0
+rotation = -1.57169
+
+[node name="right2" type="ColorRect" parent="StaticBody2D"]
+offset_left = 1136.0
+offset_top = 673.0
+offset_right = 1832.0
+offset_bottom = 713.0
+rotation = -1.57169

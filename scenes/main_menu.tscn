@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://n6imad1wd4kh"]
+
+[ext_resource type="Script" uid="uid://dviher2upnlv3" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://d0gb1phgr8gkj" path="res://04b_30/04B_30__.TTF" id="2_ekxnf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bqqt6"]
+texture_margin_left = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
+texture_margin_left = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wu84c"]
+texture_margin_left = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ln24"]
+texture_margin_left = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rtw2f"]
+texture_margin_left = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oa1go"]
+texture_margin_left = 10.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -216.0
+offset_right = 448.0
+offset_bottom = -73.0
+grow_vertical = 0
+rotation = -0.143117
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Exit")
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxTexture_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ekxnf")
+text = "New Game"
+flat = true
+alignment = 0
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxTexture_wu84c")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8ln24")
+text = "Controls"
+flat = true
+alignment = 0
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../Start")
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_ekxnf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxTexture_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oa1go")
+text = "Exit"
+flat = true
+alignment = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 256.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_ekxnf")
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/normal_font_size = 64
+text = "PONG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
