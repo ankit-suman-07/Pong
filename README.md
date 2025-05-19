@@ -25,7 +25,7 @@ In godot editor, click open a new project and browse to the cloned repository fo
 ### Project screenshots
 
 **GAMEPLAY-VIDEO**
-![Video](/screenshots/gameplay_recording.mp4)
+[![Watch the video](/screenshots/godot.png)](/screenshots/gameplay_recording.mp4)
 
 **MENU:**
 ![Image](/screenshots/menu.png)
